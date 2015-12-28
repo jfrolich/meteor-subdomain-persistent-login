@@ -9,7 +9,7 @@ export default class SubdomainPersistentLogin {
   monkeyPatchMeteor(Meteor) {
     // override the getter, so in a different subdomain it will get the token
     // from a cookie first when a logintoken in localstorage is not found
-    var originalGetItem = Meteor._localStorage.getItem;
+    const originalGetItem = Meteor._localStorage.getItem;
     Meteor._localStorage.getItem = (key) => {
       var original = originalGetItem.call(Meteor._localStorage, key);
       if (key == 'Meteor.loginToken') {
@@ -22,7 +22,7 @@ export default class SubdomainPersistentLogin {
     }
 
     // override Meteor._localStorage methods and resetToken accordingly
-    var originalSetItem = Meteor._localStorage.setItem;
+    const originalSetItem = Meteor._localStorage.setItem;
     Meteor._localStorage.setItem = (key, value) => {
       if (key == 'Meteor.loginToken') {
         var loginTokenExpires = Meteor._localStorage.getItem('Meteor.loginTokenExpires')
@@ -41,7 +41,7 @@ export default class SubdomainPersistentLogin {
       originalSetItem.call(Meteor._localStorage, key, value);
     };
 
-    var originalRemoveItem = Meteor._localStorage.removeItem;
+    const originalRemoveItem = Meteor._localStorage.removeItem;
     Meteor._localStorage.removeItem = (key) => {
       if (key == 'Meteor.loginToken') {
         this.removeToken();
@@ -72,7 +72,7 @@ export default class SubdomainPersistentLogin {
   // parse cookie string and look for the login token
   getCookieToken() {
     if (document.cookie.length > 0) {
-      for (cookieKeyValue of document.cookie.split(';')) {
+      for (let cookieKeyValue of document.cookie.split(';')) {
         cookieKeyValue = cookieKeyValue && cookieKeyValue.split('=') || [];
         if (cookieKeyValue.length > 1 && cookieKeyValue[0].trim() == 'meteor_login_token') {
           return cookieKeyValue[1].trim();
