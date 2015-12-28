@@ -1,6 +1,6 @@
 {
   "name": "meteor-subdomain-persistent-login",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "This package will achive persistent login state for subdomains through cookies instead of localstorage.",
   "main": "lib/SubdomainPersistentLogin.js",
   "devDependencies": {
