@@ -1,0 +1,6 @@
+extends: airbnb/base
+
+rules:
+  semi: [2, 'never']
+  no-throw-literal: 0
+  no-unexpected-multiline: 2
