@@ -1,33 +1,39 @@
 {
   "name": "meteor-subdomain-persistent-login",
-  "version": "0.1.4",
+  "version": "1.0.0",
   "description": "This package will achive persistent login state for subdomains through cookies instead of localstorage.",
-  "main": "lib/SubdomainPersistentLogin.js",
+  "main": "lib/initSubdomainPersistentLogin.js",
   "devDependencies": {
     "babel-cli": "^6.3.17",
-    "babel-preset-es2015": "^6.3.13"
+    "babel-preset-es2015": "^6.3.13",
+    "eslint": "^1.10.3",
+    "eslint-config-airbnb": "^4.0.0"
   },
   "scripts": {
     "compile": "babel --presets es2015 -d lib/ src/",
-    "prepublish": "npm run compile"
+    "prepublish": "npm test && npm run compile",
+    "test": "eslint src"
   },
   "author": "Jaap Frolich <jfrolich@gmail.com>",
+  "contributors": [
+    "Dominik Ferber <dominik.ferber+npm@gmail.com>"
+  ],
   "license": "MIT",
-  "dependencies": {
-    "core-js": "^2.0.0"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JFrolich/meteor-subdomain-persistent-login.git"
   },
   "keywords": [
     "meteor",
-    "persisten",
+    "persistent",
     "login",
     "subdomain"
   ],
   "bugs": {
     "url": "https://github.com/JFrolich/meteor-subdomain-persistent-login/issues"
   },
+  "files": [
+    "lib"
+  ],
   "homepage": "https://github.com/JFrolich/meteor-subdomain-persistent-login#readme"
 }
