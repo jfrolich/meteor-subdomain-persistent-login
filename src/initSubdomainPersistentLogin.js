@@ -21,7 +21,7 @@ export default function initSubdomainPersistentLogin(
   // parse cookie string and look for the login token
   const getToken = () => {
     if (document.cookie.length > 0) {
-      for (const cookieKeyValue of document.cookie.split('')) {
+      for (const cookieKeyValue of document.cookie.split(';')) {
         const cookie = cookieKeyValue && cookieKeyValue.split('=') || []
         if (cookie.length > 1 && cookie[0].trim() === cookieName) {
           return cookie[1].trim()
